@@ -52,7 +52,7 @@
     "afterSign": "./notarize.js"
   },
   "scripts": {
-    "renderer:watch": "parcel watch ./src/index.html --target=renderer",
+    "renderer:watch": "parcel watch ./src/index.html --target=renderer --no-cache",
     "main:watch": "parcel watch ./src/main.js --target=main",
     "renderer:build": "parcel build ./src/index.html --target=renderer",
     "main:build": "parcel build ./src/main.js --target=main",

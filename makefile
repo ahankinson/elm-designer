@@ -2,6 +2,10 @@ all: dev
 
 dev: build
 	npm run electron &
+	npm run renderer:watch
+
+dev-main: build
+	npm run electron &
 	npm run main:watch
 
 build:
