@@ -2,26 +2,8 @@ import { Elm } from "./Main.elm"
 
 // https://github.com/electron/electron/issues/2288#issuecomment-611231970
 const isElectron = /electron/i.test(navigator.userAgent)
-
-let remote = null
-if (isElectron) {
-  remote = window.require('electron').remote
-}
-
-function getIpc() {
-  if (isElectron) {
-    return window.require("electron").ipcRenderer
-  } else {
-    return FakeIpcRenderer
-  }
-}
-
-const FakeIpcRenderer = {
-  send: function (channel, arg) { },
-  on: function (channel, arg) { }
-}
-
-const ipc = getIpc()
+const ipc = window.require("electron").ipcRenderer
+const remote = window.require('electron').remote
 
 var w = Math.max(
   document.documentElement.clientWidth,
@@ -96,14 +78,14 @@ app.ports.selectText.subscribe(function (id) {
 // * https://transitory.technology/set-drag-image/
 //
 app.ports.setDragImage.subscribe(function (event) {
-  
+
   var node = event.target.cloneNode(true);
 
   // Add a "template" class for nodes already in the page
   node.classList.add("template")
-  node.title=""
+  node.title = ""
   node.style.position = "absolute"
-  node.style.top = "-999px"  
+  node.style.top = "-999px"
   document.body.appendChild(node)
 
   var clientRect = event.target.getBoundingClientRect()
@@ -162,9 +144,7 @@ function showContextMenu(menu) {
     return;
   }
 
-  if(remote) {
-    remote.Menu.buildFromTemplate(menu).popup({ window: focusedWindow })
-  }
+  remote.Menu.buildFromTemplate(menu).popup({ window: focusedWindow }) 
 }
 
 app.ports.setupAppMenu.subscribe(function (items) {

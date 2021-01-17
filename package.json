@@ -6,17 +6,26 @@
   "author": "Andrea Peltrin",
   "repository": "https://github.com/passiomatic/elm-designer",
   "devDependencies": {
-    "cssnano": "4.1.10",
     "electron": "11.1.1",
     "electron-notarize": "1.0.0",
     "elm-hot": "1.1.5",
     "node-elm-compiler": "5.0.5",
-    "sass": "1.26.10"
+    "sass": "1.32.4"
   },
   "dependencies": {
-    "parcel-bundler": "1.12.4"
+    "parcel": "^2.0.0-beta.1"
   },
   "main": "./dist/main.js",
+  "renderer": "./dist/index.html",
+  "targets": {
+    "main": {
+      "context": "electron-main"
+    },
+    "renderer": {
+      "publicUrl": "./",
+      "context": "electron-renderer"
+    }
+  },
   "build": {
     "appId": "com.passiomatic.ElmDesigner",
     "buildVersion": "0.1.1 build A",
@@ -43,6 +52,11 @@
     "afterSign": "./notarize.js"
   },
   "scripts": {
+    "renderer:watch": "parcel watch ./src/index.html --target=renderer",
+    "main:watch": "parcel watch ./src/main.js --target=main",
+    "renderer:build": "parcel build ./src/index.html --target=renderer",
+    "main:build": "parcel build ./src/main.js --target=main",
+    "build": "npm run renderer:build && npm run main:build",
     "electron": "electron ./dist/main.js"
   }
 }

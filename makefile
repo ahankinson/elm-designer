@@ -1,20 +1,17 @@
 all: dev
 
+dev: build
+	npm run electron &
+	npm run main:watch
+
 build:
-	parcel build src/index.html --no-source-maps --target electron --public-url ./ --out-file app.html
-	parcel build src/main.js --no-source-maps --target electron --public-url ./
-
-dev-no-debug:
-	NODE_ENV=production parcel src/index.html
-
-dev:
-	parcel src/index.html
+	npm run build
 
 clean: 
 	rm -fR dist
 	rm -fR build
 
-run: clean build
+run: build
 	npm run electron
 
 package-mac: clean build icon

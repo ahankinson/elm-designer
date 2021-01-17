@@ -4,7 +4,7 @@ const appMenu = require('./menus');
 
 const isMac = process.platform === 'darwin'
 
-let mainWindow
+let mainWindow 
 
 app.on('ready', createWindow)
 
@@ -20,7 +20,7 @@ function createWindow() {
     }
   })
 
-  mainWindow.loadURL(`file://${__dirname}/app.html`)
+  mainWindow.loadURL(`file://${__dirname}/index.html`)
 
   // Application menu
   // const menu = appMenu(app, shell, isMac, [])
