@@ -27,9 +27,9 @@ Elm Designer is distributed as an Electron app. Right now there’s a [macOS bin
 
 If you need to edit the source files the `makefile` on the repository root contains a bunch on tasks which automate the most common operations.
 
-### Install Parcel
+### Install Parcel 2
 
-Elm Designer uses [Parcel][2] to compile Elm and SASS source files. Please read up [these instructions][3] to install Parcel 1.12.4 before building Elm Designer from sources.
+Elm Designer uses [Parcel 2][2] to compile Elm and SASS source files. Please read up [these instructions][3] to install Parcel 2 Beta before building Elm Designer from sources.
 
 ### Run with Electron
 
@@ -43,11 +43,11 @@ Then run:
 
     make run
 
-This will build the app assets with Parcel in production mode, copy the files into the `electron-app` folder in the repo, and finally run Electron itself.
+This will build the app assets with Parcel in production mode, copy the files into the `dist` folder in the repo, and finally run Electron itself.
 
 [1]: https://github.com/electron/electron-packager
-[2]: https://parceljs.org
-[3]: https://parceljs.org/getting_started.html
+[2]: https://v2.parceljs.org
+[3]: https://v2.parceljs.org/getting-started/webapp/
 [4]: https://www.electronjs.org
 [issue1]: https://github.com/passiomatic/elm-designer/issues/1 
 [issue2]: https://github.com/passiomatic/elm-designer/issues/2 
